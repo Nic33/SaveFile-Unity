@@ -7,9 +7,11 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
-    string path = "./MyTest.txt";
 
-    //your variables (exemple)
+    // For example, you can save your file in the same directory as this C# file.
+    string path = "/Users/<your_name>/Unity/<name_of_your_game>/Assets/Save.txt";
+
+    // your variables
     int Var1 = 0;
     int Var2 = 0;
     int Var3 = 0;
@@ -19,7 +21,7 @@ public class Save : MonoBehaviour
 
         if (!File.Exists(path))
         {
-            // Create a file to write to.
+            // Create a file to write into.
             StreamWriter sw = File.CreateText(path);
             Debug.Log("create file");
 
@@ -29,7 +31,7 @@ public class Save : MonoBehaviour
 
             string[] line = File.ReadAllLines(path);
 
-            //Read line by line
+            //Read line by line.
             foreach (string s in line)
             {                
                 if (change == 0){
@@ -43,21 +45,24 @@ public class Save : MonoBehaviour
             }
         }
     }
-    
-
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    // You can add an OnClick() on your button and use this function.
     public void save(){
+
+        Var1 = 1;
+        Var2 = 2;
+        Var3 = 3;
 
         if (File.Exists(path))
         {
             // Create a file to write to.
             using (StreamWriter sw = File.CreateText(path))
             {
-                //Write line by line
+                //Write line by line.
                 sw.WriteLine(Var1);
                 sw.WriteLine(Var2);
                 sw.WriteLine(Var3);
