@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
-    string path =  Application.persistentDataPath + "/Save.txt";
+    string path = "/MyTest.txt";
 
     int Var1 = 0;
     int Var2 = 0;
@@ -16,17 +16,17 @@ public class Save : MonoBehaviour
     void Start()
     {
         // It's a special path for IOS
-        if (!File.Exists(path))    
+        if (!File.Exists(Application.persistentDataPath+path))
         {
             // Create a file to write to.
-            StreamWriter sw = File.CreateText(path);
+            StreamWriter sw = File.CreateText(Application.persistentDataPath+path);
             Debug.Log("create file");
 
         }else{
 
             int change = 0;
 
-            string[] line = File.ReadAllLines(path);
+            string[] line = File.ReadAllLines(Application.persistentDataPath+path);
 
             //Read line by line
             foreach (string s in line)
@@ -52,10 +52,10 @@ public class Save : MonoBehaviour
         Var2 = 2;
         Var3 = 3;
 
-        if (File.Exists(path))
+        if (File.Exists(Application.persistentDataPath+path))
         {
             // Create a file to write to.
-            using (StreamWriter sw = File.CreateText(path))
+            using (StreamWriter sw = File.CreateText(Application.persistentDataPath+path))
             {
                 //Write line by line
                 sw.WriteLine(Var1);
